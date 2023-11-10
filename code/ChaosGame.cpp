@@ -74,7 +74,15 @@ int main()
             ///select random vertex
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
-            
+            srand(time(0));
+            int randomPos = rand() % vertices.size();
+            int randomVertex = vertices[randomPos];
+            if (randomVertex == vertices[0] || vertices[1] || vertices[2])
+            {
+                cout << "Success!";
+            }
+
+
         }
 
         /*
