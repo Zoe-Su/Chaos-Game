@@ -19,7 +19,18 @@ int main()
     vector<Vector2f> vertices;
     vector<Vector2f> points;
 
+    // Load font
     Font font;
+    if (!font.loadFromFile("arial.ttf"))
+    {
+        cout << "Error loading font";
+    }   
+
+    // Setup text object
+    Text text;
+    text.setFont(font);
+    text.setString("Hello");
+
 
 
 	while (window.isOpen())
@@ -76,11 +87,6 @@ int main()
             ///push back the newly generated coord.
             srand(time(0));
             int randomPos = rand() % vertices.size();
-            int randomVertex = vertices[randomPos];
-            if (randomVertex == vertices[0] || vertices[1] || vertices[2])
-            {
-                cout << "Success!";
-            }
 
 
         }
@@ -91,6 +97,8 @@ int main()
 		****************************************
 		*/
         window.clear();
+        // Display text object
+        window.draw(text);
         for(int i = 0; i < vertices.size(); i++)
         {
             RectangleShape rect(Vector2f(10,10));
