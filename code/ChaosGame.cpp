@@ -31,8 +31,6 @@ int main()
     text.setFont(font);
     text.setString("Hello");
 
-
-
 	while (window.isOpen())
 	{
         /*
@@ -87,8 +85,9 @@ int main()
             ///push back the newly generated coord.
             srand(time(0));
             int randomPos = rand() % vertices.size();
-
-
+            Vector2f randomVertex = vertices[randomPos];
+            Vector2f midpoint = (randomVertex + points.back()) / float(2.0);
+            points.push_back(midpoint);
         }
 
         /*
@@ -97,6 +96,7 @@ int main()
 		****************************************
 		*/
         window.clear();
+
         // Display text object
         window.draw(text);
         for(int i = 0; i < vertices.size(); i++)
@@ -105,6 +105,15 @@ int main()
             rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
             rect.setFillColor(Color::Blue);
             window.draw(rect);
+        }
+
+        // Draw all points
+        for (int i = 0; i < points.size(); i++)
+        {
+            CircleShape point(2);
+            point.setPosition(points[i]);
+            point.setFillColor(Color::Blue);
+            window.draw(point);
         }
         window.display();
     }
