@@ -19,6 +19,9 @@ int main()
     vector<Vector2f> vertices;
     vector<Vector2f> points;
 
+    Font font;
+
+
 	while (window.isOpen())
 	{
         /*
@@ -50,6 +53,7 @@ int main()
                     {
                         ///fourth click
                         ///push back to points vector
+                        points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
                     }
                 }
             }
@@ -70,6 +74,7 @@ int main()
             ///select random vertex
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
+            
         }
 
         /*
