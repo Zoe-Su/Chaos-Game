@@ -29,7 +29,7 @@ int main()
     // Setup text object
     Text text;
     text.setFont(font);
-    text.setString("Hello");
+    text.setString("Click three dots");
 
 	while (window.isOpen())
 	{
