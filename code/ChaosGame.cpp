@@ -14,7 +14,7 @@ int main()
     // Create a video mode object
 	VideoMode vm(1920, 1080);
 	// Create and open a window for the game
-	RenderWindow window(vm, "Timber Game!!", Style::Default);
+	RenderWindow window(vm, "Chaos Game!!", Style::Default);
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
@@ -29,7 +29,7 @@ int main()
     // Setup text object
     Text text;
     text.setFont(font);
-    text.setString("Click three dots to make a triangle. Click for a fourth dot to start the chaos game!");
+    text.setString("Click three dots to make a triangle. Click for a fourth dot to start the chaos game!!");
 
 	while (window.isOpen())
 	{
@@ -88,7 +88,7 @@ int main()
             {
                 int randomPos = rand() % vertices.size();
                 Vector2f randomVertex = vertices[randomPos];
-                Vector2f midpoint = (randomVertex + points.back()) / float(2.0);
+                Vector2f midpoint((randomVertex.x + points.back().x)/2, (randomVertex.y + points.back().y)/2);
                 points.push_back(midpoint);
             }
         }
