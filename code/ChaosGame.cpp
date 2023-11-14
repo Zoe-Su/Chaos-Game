@@ -29,7 +29,7 @@ int main()
     // Setup text object
     Text text;
     text.setFont(font);
-    text.setString("Click three dots");
+    text.setString("Click three dots to make a triangle. Click for a fourth dot to start the chaos game!");
 
 	while (window.isOpen())
 	{
@@ -84,10 +84,13 @@ int main()
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
             srand(time(0));
-            int randomPos = rand() % vertices.size();
-            Vector2f randomVertex = vertices[randomPos];
-            Vector2f midpoint = (randomVertex + points.back()) / float(2.0);
-            points.push_back(midpoint);
+            for (int i = 0; i < 2000; i++)
+            {
+                int randomPos = rand() % vertices.size();
+                Vector2f randomVertex = vertices[randomPos];
+                Vector2f midpoint = (randomVertex + points.back()) / float(2.0);
+                points.push_back(midpoint);
+            }
         }
 
         /*
