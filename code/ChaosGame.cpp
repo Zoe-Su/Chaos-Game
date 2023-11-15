@@ -29,7 +29,7 @@ int main()
     // Setup text object
     Text text;
     text.setFont(font);
-    text.setString("Click three dots to make a triangle. Click for a fourth dot to start the chaos game!!");
+    text.setString("Click four dots to make a square. Click for a fifth dot to start the chaos game!!");
 
 	while (window.isOpen())
 	{
@@ -54,7 +54,7 @@ int main()
                     std::cout << "mouse x: " << event.mouseButton.x << std::endl;
                     std::cout << "mouse y: " << event.mouseButton.y << std::endl;
 
-                    if(vertices.size() < 3)
+                    if(vertices.size() < 4)
                     {
                         vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
                     }
@@ -84,12 +84,17 @@ int main()
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
             srand(time(0));
+            Vector2f currentVertex;
             for (int i = 0; i < 2000; i++)
             {
                 int randomPos = rand() % vertices.size();
                 Vector2f randomVertex = vertices[randomPos];
+                if (randomVertex != currentVertex)
+                {
                 Vector2f midpoint((randomVertex.x + points.back().x)/2, (randomVertex.y + points.back().y)/2);
                 points.push_back(midpoint);
+                currentVertex = randomVertex;
+                }
             }
         }
 
@@ -113,10 +118,18 @@ int main()
         // Draw all points
         for (int i = 0; i < points.size(); i++)
         {
+            if (i%2 ==1){
             CircleShape point(2);
             point.setPosition(points[i]);
             point.setFillColor(Color::Blue);
             window.draw(point);
+            }
+            else {
+            CircleShape point(2);
+            point.setPosition(points[i]);
+            point.setFillColor(Color::White);
+            window.draw(point);
+            }
         }
         window.display();
     }
